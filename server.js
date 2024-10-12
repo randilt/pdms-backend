@@ -116,12 +116,12 @@ app.delete('/34082115/Durgka/api/v1/drivers/:driver_id', async (req, res) => {
 
 // 4. Update driver license and department by ID (PATCH)
 app.patch('/34082115/Durgka/api/v1/drivers', async (req, res) => {
-  const { id, driver_licence, driver_department } = req.body
+  const { id, driver_licence, driver_department, driver_isActive } = req.body
 
   try {
     const updateResult = await Driver.updateOne(
       { _id: id },
-      { $set: { driver_licence, driver_department } }
+      { $set: { driver_licence, driver_department, driver_isActive } }
     )
 
     if (updateResult.matchedCount === 0) {
